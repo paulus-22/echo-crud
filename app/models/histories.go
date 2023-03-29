@@ -36,13 +36,13 @@ func (history *Order_histories) Deletehistory() error {
 	return nil
 }
 
-func GetOneByid(id string) (Order_histories, error) {
+func GetHistoryByid(id string) (Order_histories, error) {
 	var history Order_histories
 	result := config.DB.Where("id = ?", id).First(&history)
 	return history, result.Error
 }
 
-func GetAll(id string) ([]Order_histories, error) {
+func GetHistories(id string) ([]Order_histories, error) {
 	var Order_histories []Order_histories
 	result := config.DB.Where("id LIKE ? ", "%"+id+"%").Find(&Order_histories)
 
